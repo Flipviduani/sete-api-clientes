@@ -44,17 +44,4 @@ The codebase is organized into packages by responsibility. Each layer has a clea
 
 The database runs in Docker using the repository's docker-compose.yml. The compose configuration defines a PostgreSQL service and a pgAdmin service for database administration.
 
-## Links
-
-- Spring Boot: https://spring.io/projects/spring-boot
-- Spring Framework / Spring Web: https://spring.io/projects/spring-framework
-- JDBC: https://docs.oracle.com/javase/8/docs/api/java/sql/package-summary.html
-- Lombok: https://projectlombok.org/
-- Swagger / OpenAPI: https://swagger.io/
-- Docker: https://www.docker.com/
-- Docker Compose: https://docs.docker.com/compose/
-- PostgreSQL: https://www.postgresql.org/
-- pgAdmin: https://www.pgadmin.org/
-
-
 > This README provides an overview of the project purpose, the main technologies used, and the responsibilities of each package layer. It intentionally omits run instructions and class-by-class descriptions.
