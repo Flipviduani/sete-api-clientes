@@ -1,0 +1,41 @@
+
+services:
+
+  postgres:
+    image: postgres:16
+    container_name: sete-api-clientes-postgres
+    restart: always
+    ports:
+      - "5435:5432"
+    environment:
+      POSTGRES_DB: bd-apiclientes
+      POSTGRES_USER: vidu
+      POSTGRES_PASSWORD: vidu
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - api-clientes-network
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: sete-api-clientes-pgadmin
+    restart: always
+    ports:
+      - "5052:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: vidu@email.com
+      PGADMIN_DEFAULT_PASSWORD: "Vidu@2026"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    networks:
+      - api-clientes-network
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
+  pgadmin_data:
+
+networks:
+  api-clientes-network:
+    driver: bridge
