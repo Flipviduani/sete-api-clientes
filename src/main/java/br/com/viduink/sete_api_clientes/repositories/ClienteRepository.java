@@ -30,13 +30,46 @@ public class ClienteRepository {
     }
 
     public boolean atualizar(Cliente cliente) throws Exception {
-        //TODO
-        return false;
+        try (var connection = connectionFactory.getConnection()) {
+            var statement = connection.prepareStatement("""
+                        UPDATE clientes
+                        SET
+                           nome = ?,
+                           email = ?,
+                           cpf = ?,
+                           plano_id = ?,
+                           datahoraalteracao = CURRENT_TIMESTAMP
+                        WHERE
+                            id = ?
+                        AND
+                            ativo = TRUE
+                    """);
+            statement.setString(1, cliente.getNome());
+            statement.setString(2, cliente.getEmail());
+            statement.setString(3, cliente.getCpf());
+            statement.setObject(4, cliente.getPlano().getId());
+            statement.setObject(5, cliente.getId());
+            return statement.executeUpdate() > 0;
+        }
     }
 
     public boolean excluir(UUID id) throws Exception {
-        //TODO
-        return false;
+        try (var connection = connectionFactory.getConnection()) {
+            var statement = connection.prepareStatement("""
+                        UPDATE clientes
+                        SET
+                            ativo = FALSE
+                    
+                           datahoraexclusao = CURRENT_TIMESTAMP
+                        WHERE
+                            id = ?
+                        AND
+                            ativo = TRUE
+                    """);
+
+            statement.setObject(1, id);
+            return statement.executeUpdate() > 0;
+        }
     }
 
     public List<Cliente> obterPorNome(String nome) throws Exception {
