@@ -19,5 +19,4 @@ public class Cliente {
     private Plano plano;
 
 
-
 }

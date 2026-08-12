@@ -15,11 +15,11 @@ public class ClienteRepository {
     private ConnectionFactory connectionFactory;
 
     public void inserir(Cliente cliente) throws Exception {
-        try (var connection = connectionFactory.getConnection()){
+        try (var connection = connectionFactory.getConnection()) {
             var statement = connection.prepareStatement("""
-                INSERT INTO clientes (id, nome, email, cpf, plano_id, dataHoraCadastro)
-                VALUES (?,?,?,?,?, CURRENT_TIMESTAMP)
-        """);
+                            INSERT INTO clientes (id, nome, email, cpf, plano_id, dataHoraCadastro)
+                            VALUES (?,?,?,?,?, CURRENT_TIMESTAMP)
+                    """);
             statement.setObject(1, cliente.getId());
             statement.setString(2, cliente.getNome());
             statement.setString(3, cliente.getEmail());

@@ -21,8 +21,7 @@ public class PlanosController {
             var planos = planoRepository.consultarTodos();
             //HTTP 200 (OK)
             return ResponseEntity.ok(planos);
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             //HTTP 500 (INTERNAL SERVER ERROR)
             return ResponseEntity.status(500).body(e.getMessage());
         }

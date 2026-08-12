@@ -18,8 +18,8 @@ public class ClientesController {
     private ClienteRepository clienteRepository;
 
     @PostMapping
-    public ResponseEntity<?> post(@RequestBody ClienteRequestDto dto){
-        try{
+    public ResponseEntity<?> post(@RequestBody ClienteRequestDto dto) {
+        try {
             var cliente = new Cliente(); //instanciando a classe de entidade
             cliente.setPlano(new Plano()); //instanciando o atributo plano associado ao cliente
 
@@ -39,17 +39,17 @@ public class ClientesController {
     }
 
     @PutMapping
-    public String put(){
+    public String put() {
         return "Cliente atualizado com sucesso!";
     }
 
     @DeleteMapping
-    public String delete(){
+    public String delete() {
         return "Cliente excluído com sucesso!";
     }
 
     @GetMapping
-    public String get(){
+    public String get() {
         return "Consulta realizada com sucesso!";
     }
 }

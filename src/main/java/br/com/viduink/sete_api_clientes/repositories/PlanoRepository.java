@@ -1,4 +1,5 @@
 package br.com.viduink.sete_api_clientes.repositories;
+
 import br.com.viduink.sete_api_clientes.entities.Plano;
 import br.com.viduink.sete_api_clientes.factories.ConnectionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class PlanoRepository {
             List<Plano> lista = new ArrayList<>();
 
             //Percorrer os registros obtidos
-            while(result.next()) {
+            while (result.next()) {
 
                 var plano = new Plano();
 
